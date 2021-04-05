@@ -14,7 +14,7 @@ services:
     #volumes:
     #  - './services/users:/usr/src/app'
     ports:
-      - 5000:5000
+      - 5004:5000
     environment:
       - FLASK_ENV=development
       - DATABASE_URL=mongodb+srv://admin:admin@tweets.8ugzv.mongodb.net/tweets?retryWrites=true&w=majority
@@ -37,7 +37,9 @@ services:
       - NODE_ENV=development
       - BE_NETWORK=backend
       - BE_PORT=5000
-      - REACT_APP_API_SERVICE_URL=${REACT_APP_API_SERVICE_URL}
+      # - REACT_APP_API_SERVICE_URL=${REACT_APP_API_SERVICE_URL}
+      # - REACT_APP_API_SERVICE_URL=http://localhost:5004
+      - REACT_APP_API_SERVICE_URL=http://flask-react-alb-1706048351.us-east-1.elb.amazonaws.com/
     depends_on:
       - be
     # specifies frontend and backend as the networks the fe service will have access to
